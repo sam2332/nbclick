@@ -64,7 +64,7 @@ class NotebookCommandClass(click.MultiCommand):
         def callback(**parameters):
             new_params = nbparameterise.parameter_values(old_params, **parameters)
             new_nb = nbparameterise.replace_definitions(nb, new_params)
-            nbclient.execute(new_nb)
+            return nbclient.execute(new_nb)
 
         return click.Command(name, params=click_params, callback=callback)
 
